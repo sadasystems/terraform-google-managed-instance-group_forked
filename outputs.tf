@@ -34,11 +34,6 @@ output instances {
   value       = "${data.google_compute_instance_group.zonal.*.instances}"
 }
 
-output instance_group_self_link {
-  description = "The self_link of the instance group."
-  value       = "${data.google_compute_instance_group.zonal.*.self_link}"
-}
-
 output region_instance_group {
   description = "Link to the `instance_group` property of the region instance group manager resource."
   value       = "${element(concat(google_compute_region_instance_group_manager.default.*.instance_group, list("")), 0)}"
