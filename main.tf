@@ -183,6 +183,8 @@ resource "google_compute_region_instance_group_manager" "default" {
   timeouts = {
     create = "${var.http_health_check ? "15m" : "5m"}"
   }
+  provider = "googe-beta"
+  provider = "googe"
 }
 
 resource "google_compute_region_autoscaler" "default" {
