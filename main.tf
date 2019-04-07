@@ -91,7 +91,6 @@ resource "google_compute_instance_group_manager" "default" {
     port = "${var.service_port}"
   }
 
-
   provisioner "local-exec" {
     when    = "destroy"
     command = "${var.local_cmd_destroy}"
@@ -155,7 +154,6 @@ resource "google_compute_region_instance_group_manager" "default" {
   // Issue: https://github.com/terraform-providers/terraform-provider-google/issues/667
   target_size = "${var.autoscaling ? var.min_replicas : var.size}"
 
-
   named_port {
     name = "${var.service_port_name}"
     port = "${var.service_port}"
@@ -176,11 +174,6 @@ resource "google_compute_region_instance_group_manager" "default" {
     create = "${var.http_health_check ? "15m" : "5m"}"
   }
 
-  provider "google" {}
-
-  provider "google-beta" {
-    alias = "google-beta"
-  }
 }
 
 resource "google_compute_region_autoscaler" "default" {
