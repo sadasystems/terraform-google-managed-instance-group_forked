@@ -184,12 +184,11 @@ resource "google_compute_region_instance_group_manager" "default" {
     create = "${var.http_health_check ? "15m" : "5m"}"
   }
 
-  provider = "googe"
+  provider "google" {}
 
   provider "google-beta" {
     alias = "google-beta"
   }
-
 }
 
 resource "google_compute_region_autoscaler" "default" {
